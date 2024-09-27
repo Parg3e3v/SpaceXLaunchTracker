@@ -1,4 +1,4 @@
-package com.parg3v.spacexlaunchtracker.ui.theme
+package com.parg3v.spacexlaunchtracker.common_presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
