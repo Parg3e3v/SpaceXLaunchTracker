@@ -41,8 +41,6 @@ class LaunchTrackerHelper {
     private val _studentList: MutableStateFlow<List<LaunchLogDataModel>> =
         MutableStateFlow(mockData)
 
-    fun getStudentList(): MutableStateFlow<List<LaunchLogDataModel>> {
-        return _studentList
-    }
+    fun getStudentList(): MutableStateFlow<List<LaunchLogDataModel>> = _studentList
 
 }

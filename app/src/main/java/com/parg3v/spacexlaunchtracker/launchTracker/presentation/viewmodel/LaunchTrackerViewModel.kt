@@ -3,7 +3,6 @@ package com.parg3v.spacexlaunchtracker.launchTracker.presentation.viewmodel
 import androidx.lifecycle.viewModelScope
 import com.parg3v.spacexlaunchtracker.launchTracker.domain.usecase.GetLaunchesUseCase
 import com.parg3v.spacexlaunchtracker.launchTracker.presentation.contract.LaunchTrackerContract
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class LaunchTrackerViewModel(
@@ -19,7 +18,6 @@ class LaunchTrackerViewModel(
 
     init {
         viewModelScope.launch {
-            delay(3000)
             getLaunches()
         }
     }
