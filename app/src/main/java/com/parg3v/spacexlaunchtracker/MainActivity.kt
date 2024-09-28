@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import com.parg3v.spacexlaunchtracker.common_presentation.theme.SpaceXLaunchTrackerTheme
 import com.parg3v.spacexlaunchtracker.launchTracker.presentation.screen.LaunchTrackerScreen
 import com.parg3v.spacexlaunchtracker.launchTracker.presentation.viewmodel.LaunchTrackerViewModel
+import com.parg3v.spacexlaunchtracker.launchTracker.presentation.viewmodel.SimpleClockViewModel
 import org.koin.androidx.compose.getViewModel
 
 class MainActivity : ComponentActivity() {
@@ -21,13 +22,15 @@ class MainActivity : ComponentActivity() {
             SpaceXLaunchTrackerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
-                    val viewModel: LaunchTrackerViewModel = getViewModel()
+                    val launchTrackerViewModel: LaunchTrackerViewModel = getViewModel()
+                    val simpleClockViewModel: SimpleClockViewModel = getViewModel()
 
                     LaunchTrackerScreen(
                         modifier = Modifier.padding(innerPadding),
-                        state = viewModel.viewState.value,
-                        effect = viewModel.effect,
-                        onEvent = viewModel::setEvent
+                        launchTrackerState = launchTrackerViewModel.viewState.value,
+                        effect = simpleClockViewModel.effect,
+                        clockState = simpleClockViewModel.viewState.value,
+                        onEventClock = simpleClockViewModel::setEvent
                     )
                 }
             }
