@@ -7,11 +7,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.parg3v.spacexlaunchtracker.common_presentation.theme.SpaceXLaunchTrackerTheme
+import com.parg3v.spacexlaunchtracker.launchTracker.presentation.screen.LaunchTrackerScreen
+import com.parg3v.spacexlaunchtracker.launchTracker.presentation.viewmodel.LaunchTrackerViewModel
+import org.koin.androidx.compose.getViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,28 +20,17 @@ class MainActivity : ComponentActivity() {
         setContent {
             SpaceXLaunchTrackerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+
+                    val viewModel: LaunchTrackerViewModel = getViewModel()
+
+                    LaunchTrackerScreen(
+                        modifier = Modifier.padding(innerPadding),
+                        state = viewModel.viewState.value,
+                        effect = viewModel.effect,
+                        onEvent = viewModel::setEvent
                     )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    SpaceXLaunchTrackerTheme {
-        Greeting("Android")
     }
 }
