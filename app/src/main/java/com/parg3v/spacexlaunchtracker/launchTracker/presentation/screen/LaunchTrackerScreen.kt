@@ -15,27 +15,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.parg3v.spacexlaunchtracker.launchTracker.presentation.contract.LaunchTrackerContract
-import com.parg3v.spacexlaunchtracker.launchTracker.presentation.contract.SimpleClockContract
 import kotlinx.coroutines.flow.Flow
 
 @Composable
 fun LaunchTrackerScreen(
     modifier: Modifier = Modifier,
     launchTrackerState: LaunchTrackerContract.State,
-    clockState: SimpleClockContract.State,
-    effect: Flow<SimpleClockContract.Effect>,
-    onEventClock: (SimpleClockContract.Event) -> Unit,
+    effect: Flow<LaunchTrackerContract.Effect>,
+    onEventClock: (LaunchTrackerContract.Event) -> Unit,
 ) {
 
-    LaunchedEffect(Unit) {
-        effect.collect { effect ->
-            when (effect) {
-                SimpleClockContract.Effect.UpdateTime -> {
-                    onEventClock(SimpleClockContract.Event.UpdateTime)
-                }
-            }
-        }
-    }
 
     LazyColumn(
         modifier = modifier
@@ -44,7 +33,7 @@ fun LaunchTrackerScreen(
     ) {
         item {
             Text(
-                text = clockState.stringFormat,
+                text = launchTrackerState.clock,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 50.dp),

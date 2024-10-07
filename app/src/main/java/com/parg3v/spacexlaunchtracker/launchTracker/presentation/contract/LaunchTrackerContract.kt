@@ -10,10 +10,11 @@ class LaunchTrackerContract {
         // empty
     }
 
-    data class State(val launchLogList: List<LaunchLogDomainModel>) : ViewState {
+    data class State(val launchLogList: List<LaunchLogDomainModel>, val clock: String) : ViewState {
         companion object {
             val INITIAL = State(
-                launchLogList = emptyList()
+                launchLogList = emptyList(),
+                clock = "00:00:00"
             )
         }
     }
