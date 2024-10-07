@@ -1,6 +1,7 @@
 package com.parg3v.spacexlaunchtracker
 
 import android.app.Application
+import com.parg3v.spacexlaunchtracker.common_data.di.apolloModule
 import com.parg3v.spacexlaunchtracker.launchTracker.data.di.launchTrackerDataModule
 import com.parg3v.spacexlaunchtracker.launchTracker.data.di.simpleClockDataModule
 import com.parg3v.spacexlaunchtracker.launchTracker.domain.di.launchTrackerDomainModule
@@ -24,7 +25,8 @@ class SpaceXLaunchTrackerApplication : Application() {
                 launchTrackerPresentationModule,
                 simpleClockDataModule,
                 simpleClockDomainModule,
-                simpleClockPresentationModule
+                simpleClockPresentationModule,
+                apolloModule
             )
         }
     }

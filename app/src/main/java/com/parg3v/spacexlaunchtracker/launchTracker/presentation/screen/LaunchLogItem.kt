@@ -3,6 +3,7 @@ package com.parg3v.spacexlaunchtracker.launchTracker.presentation.screen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -21,6 +22,7 @@ fun LaunchLogItem(modifier: Modifier = Modifier, item: LaunchLogDomainModel) {
 
     Column(
         modifier = modifier
+            .fillMaxWidth()
             .background(Color.LightGray, shape = RoundedCornerShape(20))
             .padding(32.dp),
         verticalArrangement = Arrangement.spacedBy(5.dp)
