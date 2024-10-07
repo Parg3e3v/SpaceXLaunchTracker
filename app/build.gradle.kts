@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.apollo.graphql)
 }
 
 android {
@@ -49,6 +50,12 @@ android {
     }
 }
 
+apollo {
+    service("service") {
+        packageName.set("src.main.graphql")
+    }
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -72,4 +79,6 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.androidx.compose)
     implementation(libs.koin.android)
+
+    implementation(libs.apollo.runtime)
 }
